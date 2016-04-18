@@ -11,4 +11,10 @@ namespace cj {
 		this->setSize(Size(width, height));
 		window = new sf::RenderWindow(sf::VideoMode(width, height), caption.to_string());
 	}
+
+	void RenderWindow::line(Rect rect) {}
+	void RenderWindow::rectangle(Rect rect) {}
+	void RenderWindow::roundRect(Rect rect, int cornerW, int cornerH) {}
+	void RenderWindow::ellipse(Rect rect) {}
+
 }
