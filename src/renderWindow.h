@@ -4,7 +4,7 @@
 
 namespace cj {
 	class RenderWindow : public Canvas {
-	public:
+	protected:
 		sf::RenderWindow *window;
 	public:
 		RenderWindow(Control *owner);
@@ -14,6 +14,11 @@ namespace cj {
 		virtual void rectangle(Rect rect);
 		virtual void roundRect(Rect rect, int cornerW, int cornerH);
 		virtual void ellipse(Rect rect);
+
+		virtual bool isOpen();
+		virtual bool pollEvent(sf::Event &event);
+		virtual void eventHandler();
+		virtual void close();
 
 	};
 }
