@@ -4,7 +4,7 @@
 
 namespace cj {
 	class RenderWindow : public Canvas {
-	protected:
+	public:
 		sf::RenderWindow *window;
 	public:
 		RenderWindow(Control *owner);
