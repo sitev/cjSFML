@@ -33,7 +33,7 @@ namespace cj {
 			case sf::Event::Closed:                 ///< The window requested to be closed (no data)
 				window->close();
 				break;
-			case sf::Event::MouseButtonPressed:     ///< A mouse button was pressed (data in event.mouseButton)
+			case sf::Event::MouseButtonPressed: {  ///< A mouse button was pressed (data in event.mouseButton)
 				MouseButton mb;
 				switch (event.mouseButton.button) {
 				case sf::Mouse::Left:
@@ -51,6 +51,30 @@ namespace cj {
 				Point pt(event.mouseButton.x, event.mouseButton.y);
 
 				mouseDown(mb, sk, pt);
+				break;
+			}
+				
+				
+			case sf::Event::KeyPressed:             ///< A key was pressed (data in event.key)
+				String s = "";
+				switch (event.key.code) {
+				case sf::Keyboard::E: 
+					s = "E";
+					break;
+				case sf::Keyboard::B:
+					s = "B";
+					break;
+				case sf::Keyboard::R:
+					s = "R";
+					break;
+				case sf::Keyboard::S:
+					s = "S";
+					break;
+				case sf::Keyboard::L:
+					s = "L";
+					break;
+				}
+				keyPress(s);
 
 				break;
 				/*
@@ -58,7 +82,7 @@ namespace cj {
 					LostFocus,              ///< The window lost the focus (no data)
 					GainedFocus,            ///< The window gained the focus (no data)
 					TextEntered,            ///< A character was entered (data in event.text)
-					KeyPressed,             ///< A key was pressed (data in event.key)
+					
 					KeyReleased,            ///< A key was released (data in event.key)
 					MouseWheelMoved,        ///< The mouse wheel was scrolled (data in event.mouseWheel) (deprecated)
 					MouseWheelScrolled,     ///< The mouse wheel was scrolled (data in event.mouseWheelScroll)
