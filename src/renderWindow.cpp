@@ -33,6 +33,26 @@ namespace cj {
 			case sf::Event::Closed:                 ///< The window requested to be closed (no data)
 				window->close();
 				break;
+			case sf::Event::MouseButtonPressed:     ///< A mouse button was pressed (data in event.mouseButton)
+				MouseButton mb;
+				switch (event.mouseButton.button) {
+				case sf::Mouse::Left:
+					mb = mbtLeft;
+					break;
+				case sf::Mouse::Right:
+					mb = mbtRight;
+					break;
+				case sf::Mouse::Middle:
+					mb = mbtMiddle;
+					break;
+				}
+
+				ShiftKeys sk;
+				Point pt(event.mouseButton.x, event.mouseButton.y);
+
+				mouseDown(mb, sk, pt);
+
+				break;
 				/*
 					Resized,                ///< The window was resized (data in event.size)
 					LostFocus,              ///< The window lost the focus (no data)
@@ -42,7 +62,7 @@ namespace cj {
 					KeyReleased,            ///< A key was released (data in event.key)
 					MouseWheelMoved,        ///< The mouse wheel was scrolled (data in event.mouseWheel) (deprecated)
 					MouseWheelScrolled,     ///< The mouse wheel was scrolled (data in event.mouseWheelScroll)
-					MouseButtonPressed,     ///< A mouse button was pressed (data in event.mouseButton)
+					
 					MouseButtonReleased,    ///< A mouse button was released (data in event.mouseButton)
 					MouseMoved,             ///< The mouse cursor moved (data in event.mouseMove)
 					MouseEntered,           ///< The mouse cursor entered the area of the window (no data)
@@ -66,6 +86,7 @@ namespace cj {
 			if (event.type == sf::Event::Closed)
 				window->close();
 				*/
+			//map->mouseEventsHundler(&event);
 		}
 	}
 
