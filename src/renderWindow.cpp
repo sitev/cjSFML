@@ -53,7 +53,27 @@ namespace cj {
 				mouseDown(mb, sk, pt);
 				break;
 			}
-				
+			case sf::Event::MouseButtonReleased: {    ///< A mouse button was released (data in event.mouseButton)
+				MouseButton mb;
+				switch (event.mouseButton.button) {
+				case sf::Mouse::Left:
+					mb = mbtLeft;
+					break;
+				case sf::Mouse::Right:
+					mb = mbtRight;
+					break;
+				case sf::Mouse::Middle:
+					mb = mbtMiddle;
+					break;
+				}
+
+				ShiftKeys sk;
+				Point pt(event.mouseButton.x, event.mouseButton.y);
+
+				mouseUp(mb, sk, pt);
+				break;
+			}
+
 				
 			case sf::Event::KeyPressed:             ///< A key was pressed (data in event.key)
 				String s = "";
@@ -87,7 +107,7 @@ namespace cj {
 					MouseWheelMoved,        ///< The mouse wheel was scrolled (data in event.mouseWheel) (deprecated)
 					MouseWheelScrolled,     ///< The mouse wheel was scrolled (data in event.mouseWheelScroll)
 					
-					MouseButtonReleased,    ///< A mouse button was released (data in event.mouseButton)
+					
 					MouseMoved,             ///< The mouse cursor moved (data in event.mouseMove)
 					MouseEntered,           ///< The mouse cursor entered the area of the window (no data)
 					MouseLeft,              ///< The mouse cursor left the area of the window (no data)
