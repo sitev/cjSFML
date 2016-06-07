@@ -5,6 +5,7 @@
 namespace cj {
 	RenderWindow::RenderWindow(Control *owner) : Canvas(owner) {
 		window = new sf::RenderWindow(sf::VideoMode(640, 480), "Test SFML");
+		m_sprite = new sf::Sprite();
 	}
 
 	RenderWindow::RenderWindow(Control *owner, int width, int height, String caption) : Canvas(owner) {
@@ -16,6 +17,11 @@ namespace cj {
 	void RenderWindow::rectangle(Rect rect) {}
 	void RenderWindow::roundRect(Rect rect, int cornerW, int cornerH) {}
 	void RenderWindow::ellipse(Rect rect) {}
+
+	void RenderWindow::sprite(Rect rect) {
+
+	}
+
 
 	bool RenderWindow::isOpen() {
 		return window->isOpen();
