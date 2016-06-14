@@ -20,7 +20,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -80,10 +80,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\renderWindow.cpp" />
+    <ClCompile Include="..\..\src\sfmlSprite.cpp" />
+    <ClCompile Include="..\..\src\sfmlTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\cjSFML.h" />
     <ClInclude Include="..\..\src\renderWindow.h" />
+    <ClInclude Include="..\..\src\sfmlSprite.h" />
+    <ClInclude Include="..\..\src\sfmlTexture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

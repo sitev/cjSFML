@@ -18,8 +18,10 @@ namespace cj {
 	void RenderWindow::roundRect(Rect rect, int cornerW, int cornerH) {}
 	void RenderWindow::ellipse(Rect rect) {}
 
-	void RenderWindow::sprite(Rect rect) {
-
+	void RenderWindow::sprite(Rect rect, Sprite &sprite) {
+		SfmlSprite *sfmlSprite = (SfmlSprite*)&sprite;
+		sf::Sprite *sfSprite = sfmlSprite->getSfSprite();
+		window->draw(*sfSprite);
 	}
 
 
@@ -142,6 +144,14 @@ namespace cj {
 
 	void RenderWindow::close() {
 		window->close();
+	}
+
+	void RenderWindow::clear() {
+		window->clear();
+	}
+
+	void RenderWindow::display() {
+		window->display();
 	}
 
 }

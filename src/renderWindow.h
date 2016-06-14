@@ -15,12 +15,15 @@ namespace cj {
 		virtual void rectangle(Rect rect);
 		virtual void roundRect(Rect rect, int cornerW, int cornerH);
 		virtual void ellipse(Rect rect);
-		virtual void sprite(Rect rect);
+		virtual void sprite(Rect rect, Sprite &sprite);
 
 		virtual bool isOpen();
 		virtual bool pollEvent(sf::Event &event);
 		virtual void eventHandler();
 		virtual void close();
+
+		virtual void clear();
+		virtual void display();
 
 	};
 }
