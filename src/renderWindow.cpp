@@ -82,7 +82,6 @@ namespace cj {
 				break;
 			}
 
-				
 			case sf::Event::KeyPressed:             ///< A key was pressed (data in event.key)
 				String s = "";
 				switch (event.key.code) {
@@ -101,8 +100,12 @@ namespace cj {
 				case sf::Keyboard::L:
 					s = "L";
 					break;
+				default:
+					int key = event.key.code;
+					ShiftKeys shk;
+					keyDown(key, shk);
 				}
-				keyPress(s);
+				if (s != "") keyPress(s);
 
 				break;
 				/*
