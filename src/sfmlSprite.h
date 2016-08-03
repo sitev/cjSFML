@@ -18,6 +18,8 @@ namespace cj {
 		void setTextureRect(Rect rect);
 		void setPosition(int x, int y);
 
+		virtual void setFrame(String value);
+
 	};
 
 }
