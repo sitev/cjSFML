@@ -13,6 +13,7 @@ namespace cj {
 
 		virtual void line(Rect rect);
 		virtual void rectangle(Rect rect);
+		virtual void fillRectangle(Rect rect);
 		virtual void roundRect(Rect rect, int cornerW, int cornerH);
 		virtual void ellipse(Rect rect);
 		virtual void sprite(Rect rect, Sprite &sprite);

@@ -11,16 +11,47 @@ namespace cj {
 	RenderWindow::RenderWindow(Control *owner, int width, int height, String caption) : Canvas(owner) {
 		this->setSize(Size(width, height));
 		window = new sf::RenderWindow(sf::VideoMode(width, height), caption.to_string());
+		m_sprite = new sf::Sprite();
 	}
 
 	void RenderWindow::line(Rect rect) {}
 	void RenderWindow::rectangle(Rect rect) {}
+	void RenderWindow::fillRectangle(Rect rect) {
+		sf::RectangleShape rectangle(sf::Vector2f(rect.size.w, rect.size.h));
+		rectangle.setPosition(sf::Vector2f(rect.pos.x, rect.pos.y));
+		uchar r, g, b;
+		this->color.get256(r, g, b);
+		if (texture == nullptr) {
+			rectangle.setFillColor(sf::Color(r, g, b));
+		}
+		else {
+			SfmlTexture *sfmlTexture = (SfmlTexture*)texture;
+			sf::Texture *sfTexture = sfmlTexture->getSfTexture();
+			rectangle.setTexture(sfTexture);
+			rectangle.setTextureRect(sf::IntRect(0, 0, ceil(rect.size.w), ceil(rect.size.h)));
+		}
+		window->draw(rectangle);
+	}
+
 	void RenderWindow::roundRect(Rect rect, int cornerW, int cornerH) {}
 	void RenderWindow::ellipse(Rect rect) {}
 
 	void RenderWindow::sprite(Rect rect, Sprite &sprite) {
+		if (texture == nullptr) return;
+		
 		SfmlSprite *sfmlSprite = (SfmlSprite*)&sprite;
 		sf::Sprite *sfSprite = sfmlSprite->getSfSprite();
+		sfSprite->setPosition(rect.pos.x, rect.pos.y);
+		
+
+		/*
+		SfmlTexture *sfmlTexture = (SfmlTexture*)texture;
+		sf::Texture *sfTexture = sfmlTexture->getSfTexture();
+		m_sprite->setTexture(*sfTexture);
+		//m_sprite->setTextureRect(sf::IntRect(0, 0, ceil(rect.size.w), ceil(rect.size.h)));
+
+		m_sprite->setPosition(rect.pos.x, rect.pos.y);
+		*/
 		window->draw(*sfSprite);
 	}
 

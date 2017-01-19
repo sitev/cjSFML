@@ -18,15 +18,15 @@ namespace cj {
 	}
 
 	void SfmlSprite::setTexture(Texture &tx) {
-		this->tx = &tx;
+		this->texture = &tx;
 
 		SfmlTexture* sfmlTexture = (SfmlTexture*)&tx;
 		sf::Texture *sfTexture = sfmlTexture->getSfTexture();
 		sprite->setTexture(*sfTexture);
 
-		sf::Vector2u sz = sfTexture->getSize();
-		setW(sz.x);
-		setH(sz.y);
+		//sf::Vector2u sz = sfTexture->getSize();
+		//setW(sz.x);
+		//setH(sz.y);
 	}
 
 	void SfmlSprite::setTextureRect(Rect r) {
@@ -39,8 +39,8 @@ namespace cj {
 		sprite->setTextureRect(rect);
 
 		sf::Vector2u sz = sprite->getTexture()->getSize();
-		setW(sz.x);
-		setH(sz.y);
+		setW(r.size.w);
+		setH(r.size.h);
 	}
 
 	void SfmlSprite::setPosition(int x, int y) {
